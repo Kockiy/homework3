@@ -4,11 +4,11 @@ node {
     checkout scm
   }
   stage('Build'){
-    app = docker.build("newubuntu")
+    app = docker.build("newubuntu:${env.BUILD_ID}")
   }
   stage('Push'){
     docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials'){
-      app.push()
+      app.push('latest')
     }
   }  
 }
