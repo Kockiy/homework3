@@ -7,7 +7,7 @@ node {
     app = docker.build("newubuntu:${env.BUILD_ID}")
   }
   stage('Push'){
-    docker.withRegistry('kockiy','docker-hub-credentials'){
+    docker.withRegistry('kockiy/homework3','docker-hub-credentials'){
       app.push()
     }
   }  
