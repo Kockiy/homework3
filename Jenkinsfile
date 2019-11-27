@@ -4,6 +4,6 @@ node {
     checkout scm
   }
   stage('Build'){
-    app = docker.build("NewUbuntu")
+    app = docker.build("newubuntu")
   }
 }
