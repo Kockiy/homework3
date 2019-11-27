@@ -1,11 +1,9 @@
-pipeline {
-    agent (docker true)
-    stages {
-        stage('build') {
-            steps {
-                sh "whoami"
-                sh "printenv"    
-            }
-        }
-    }
+node {
+  def app
+  stage('Clone'){
+    checkout scm
+  }
+  stage('Build'){
+    app = docker.build("NewUbuntu")
+  }
 }
