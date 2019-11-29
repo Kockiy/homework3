@@ -4,10 +4,10 @@ node {
     checkout scm
   }
   stage('Build'){
-    app = docker.build kockiy/jenkins-test + ":$BUILD_NUMBER"
+    app = docker.build("kockiy/jenkins-test:${env.BUILD_ID}")
   }
   stage('Push'){
-    docker.withRegistry('https://registry.hub.docker.com/kockiy','docker-hub-credentials'){
+    docker.withRegistry('','docker-hub-credentials'){
       app.push()
     }
   }  
